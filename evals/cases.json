@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "id": "sales_region_sum",
+      "data_file": "src/data/sample_sales.csv",
+      "question": "各区域销售额合计是多少？",
+      "expect": {
+        "min_charts": 1,
+        "aggregate": {
+          "group_by": "region",
+          "value_col": "sales",
+          "agg": "sum",
+          "must_include_keys": ["East", "West"]
+        }
+      }
+    },
+    {
+      "id": "sales_category_sum",
+      "data_file": "src/data/sample_sales.csv",
+      "question": "各品类销售额对比",
+      "expect": {
+        "min_charts": 1,
+        "aggregate": {
+          "group_by": "category",
+          "value_col": "sales",
+          "agg": "sum",
+          "must_include_keys": ["Electronics", "Home"]
+        }
+      }
+    },
+    {
+      "id": "profile_ok",
+      "data_file": "src/data/sample_sales.csv",
+      "question": "做数据画像",
+      "expect": {
+        "min_rows": 20,
+        "required_columns": ["month", "region", "category", "sales"]
+      }
+    }
+  ]
+}
